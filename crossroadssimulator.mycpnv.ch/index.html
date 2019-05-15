@@ -1,15 +1,46 @@
-<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Crossroads Simulator</title>
+		<title>Crossroads Simulator</title>		
+		<link rel="icon" href="./asset/images/favicon.ico">
 		
-		<link rel="icon" href="./images/favicon.ico">
         <link rel="stylesheet" href="./style/model.css">
+        <link rel="stylesheet" href="./style/option.css">
+        <link rel="stylesheet" href="./style/simulation.css">
+        <link rel="stylesheet" href="./style/resultSimulation.css">
 		
-		<script src="./views/model.js"></script>
+		<script src="./model/model.js"></script>
 	</head>
 	<body>
-		Site en cours de construction
+		<div class="divOption">
+			<p class="titleOption"><b>Type de carrefour :</p></br>
+			<div id="divOptionType" class="divOptionType">
+				<input id="grpType1" type="radio" value="1" name="grpType" checked>
+				<label for="grpType1">Priorité de droite</label></br>
+				<input id="grpType2" type="radio" value="2" name="grpType">
+				<label for="grpType2">Feux rouge / vert</label></br>
+				<input id="grpType3" type="radio" value="3" name="grpType">
+				<label for="grpType3">Giratoire</label></br>
+			</div>
+			<p class="titleOption"><b>Nombre de routes :</p></br>
+			<div class="divOptionNbrRoad">
+				<img id="nbrRoadLess" class="imgLess" src="./asset/images/less.png">
+				<p id="nbrRoad" class="pNumber">3</p>
+				<img id="nbrRoadMore" class="imgMore" src="./asset/images/more.png">
+			</div>
+			<p class="titleOption">Nombre de véhicules par route :</p>
+			<div class="divOptionNbrCar">
+				
+			</div>
+		</div>
+		<script src="./view/option.js"></script>
+		<div class="divSim">
+			<div class="divSimulation">
+				Simulation
+			</div>
+			<div class="divResultSimulation">
+				Result
+			</div>
+		</div>
 	</body>
 </html>

@@ -1,0 +1,19 @@
+.divOption{
+	width: 200px;
+	height: 100vh;
+	background-color: rgb(100,100,100);
+	color: rgb(255,255,255);
+	vertical-align: top;
+}
+.titleOption{
+	padding : 10px;
+}
+.divOptionType, .divOptionNbrRoad{
+	padding-left: 20px;
+}
+.divOptionNbrRoad > *{
+	display: inline-block;
+}
+.imgMore, .imgLess{
+	width: 20px;
+}

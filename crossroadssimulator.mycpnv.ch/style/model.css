@@ -1,0 +1,11 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body > *{
+	display: inline-block;
+}
+.divSim{
+	width: calc(100vw - 223px);
+	height: 100vh;
+}
