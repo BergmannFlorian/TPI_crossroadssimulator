@@ -1,19 +1,27 @@
+<!--
+Filename : index.html
+Crator : Bergmann Florian
+Last update : 16.05.2019
+ -->
 <html>
 	<head>
 		<meta charset="utf-8">
 		<title>Crossroads Simulator</title>		
 		<link rel="icon" href="./asset/images/favicon.ico">
-		
+		<!-- css file list -->
         <link rel="stylesheet" href="./style/model.css">
         <link rel="stylesheet" href="./style/option.css">
         <link rel="stylesheet" href="./style/simulation.css">
         <link rel="stylesheet" href="./style/resultSimulation.css">
-		
+		<!-- javascript file list -->
 		<script src="./model/model.js"></script>
+		<script src="./controller/function.js"></script>
 	</head>
 	<body>
+		<!-- Options list -->
 		<div class="divOption">
-			<p class="titleOption"><b>Type de carrefour :</p></br>
+			<!-- Type of crossroad -->
+			<p class="titleOption"><b>Type de carrefour :</b></p>
 			<div id="divOptionType" class="divOptionType">
 				<input id="grpType1" type="radio" value="1" name="grpType" checked>
 				<label for="grpType1">Priorité de droite</label></br>
@@ -22,25 +30,40 @@
 				<input id="grpType3" type="radio" value="3" name="grpType">
 				<label for="grpType3">Giratoire</label></br>
 			</div>
-			<p class="titleOption"><b>Nombre de routes :</p></br>
+			<!-- Number of road -->
+			<p class="titleOption"><b>Nombre de routes :</b></p>
 			<div class="divOptionNbrRoad">
-				<img id="nbrRoadLess" class="imgLess" src="./asset/images/less.png">
+				<img id="nbrRoadLess" class="imgLessRoad" src="/asset/images/less.png">
 				<p id="nbrRoad" class="pNumber">3</p>
-				<img id="nbrRoadMore" class="imgMore" src="./asset/images/more.png">
+				<img id="nbrRoadMore" class="imgMoreRoad" src="/asset/images/more.png">
 			</div>
-			<p class="titleOption">Nombre de véhicules par route :</p>
-			<div class="divOptionNbrCar">
-				
+			<!-- Number of car by road, create with js in option.js -->
+			<p class="titleOption"><b>Nombre de véhicules par route :</b></p>
+			<div id="divOptionLsNbrCar" class="divOptionLsNbrCar"></div>
+			<!-- Speed option -->
+			<p class="titleOption"><b>Vitesse des véhicules :</b></p>
+			<div class="divOptionLsNbrCar">
+				<input id="grpSpeed1" type="radio" value="1" name="grpSpeed" checked>
+				<label for="grpSpeed1">20Km/h</label></br>
+				<input id="grpSpeed2" type="radio" value="2" name="grpSpeed">
+				<label for="grpSpeed2">30Km/h</label></br>
+				<input id="grpSpeed3" type="radio" value="3" name="grpSpeed">
+				<label for="grpSpeed3">50Km/h</label></br>
 			</div>
+			<input type="button" class="btnGenerate" value="Générer">
 		</div>
-		<script src="./view/option.js"></script>
+		<!-- content of simulation -->
 		<div class="divSim">
-			<div class="divSimulation">
-				Simulation
-			</div>
+			<!-- Display the visual of simulation -->
+			<div class="divSimulation"></div>
+			<!-- Display the result of simulation -->
 			<div class="divResultSimulation">
-				Result
+				<div id="playpause" class="play"></div>
 			</div>
 		</div>
+		<!-- call javascript file -->
+		<script src="./view/option.js"></script>
+		<script src="./controller/simulation.js"></script>
+		
 	</body>
 </html>

@@ -1,7 +1,26 @@
+/* 
+Filename : simulation.css
+Crator : Bergmann Florian
+Last update : 16.05.2019
+*/
+
 .divSimulation{
 	width: 100%;
 	height: calc(100% / 2 - 4px);
 	background-color: rgb(200,200,200);
 	color: rgb(0,0,0);
 	margin-bottom: 4px;
+}
+.play, .pause{
+	height: 50px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin: 5px;
+	
+}
+.play{
+	background-image: url('/asset/images/play.png');
+}
+.pause{
+	background-image: url('/asset/images/pause.png');
 }

@@ -1,3 +1,9 @@
+/* 
+Filename : model.css
+Crator : Bergmann Florian
+Last update : 16.05.2019
+*/
+
 *{
 	margin: 0;
 	padding: 0;
@@ -6,6 +12,6 @@ body > *{
 	display: inline-block;
 }
 .divSim{
-	width: calc(100vw - 223px);
+	width: calc(100vw - 225px);
 	height: 100vh;
 }

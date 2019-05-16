@@ -8,12 +8,38 @@
 .titleOption{
 	padding : 10px;
 }
-.divOptionType, .divOptionNbrRoad{
+.divOptionType, .divOptionNbrRoad, .divOptionLsNbrCar{
 	padding-left: 20px;
 }
 .divOptionNbrRoad > *{
 	display: inline-block;
 }
-.imgMore, .imgLess{
+.divOptionLsNbrCar{
+	width: calc(100% - 20px);
+}
+.divOptionNbrCar{
+	width: 100%;
+	display: -webkit-box;
+}
+.imgMoreRoad, .imgLessRoad, .imgLessCar, .imgMoreCar{
 	width: 20px;
+	cursor: pointer;
+}
+.btnGenerate{
+	border: solid rgb(0,0,0) 1px;
+	border-radius: 5px;
+	padding: 5px;
+	width: 60px;
+	margin-left: calc(100px - 30px);
+	margin-top: 20px;
+	background-color: rgb(255,255,255);
+}
+.btnGenerate:hover{
+	background-color: rgb(185,235,255);
+}
+.btnGenerate:active{
+	background-color: rgb(185,205,225);
+}
+input{
+	cursor: pointer;
 }

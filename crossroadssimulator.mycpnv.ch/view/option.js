@@ -1,24 +1,46 @@
+//use strict//
+
+//set id of crossroad
+document.getElementById("grpType1").value = _idRightPriority;
+document.getElementById("grpType2").value = _idTraficLight;
+document.getElementById("grpType3").value = _idGiratory;
+
+//event when change type of crossroad
 document.getElementById("divOptionType").addEventListener("change", function(e){
-	document.getElementById("nbrRoad").textContent = 3;
+	//reset number of road on standard
+	document.getElementById("nbrRoad").textContent = _minRoad;
+	var optNbCar = document.getElementsByClassName("divOptionNbrCar");
+	for(var i=optNbCar.length; i>_minRoad ; i--)removeLastOptionNbCar();
 });
 
+//event when reduce number of road
 document.getElementById("nbrRoadLess").addEventListener("click", function(e){
 	var nbRoad = parseInt(document.getElementById("nbrRoad").textContent);
-	if(nbRoad > 3)document.getElementById("nbrRoad").textContent = nbRoad-1;
+	if(nbRoad > _minRoad){
+		document.getElementById("nbrRoad").textContent = nbRoad-1;
+		removeLastOptionNbCar();
+	}
 });
 
+//event when increase number of road
 document.getElementById("nbrRoadMore").addEventListener("click", function(e){
-	var maxRoad = 5;
+	//get number of road
 	var nbRoad = parseInt(document.getElementById("nbrRoad").textContent);
-	var typeCrssroad = document.getElementsByName("grpType");
-	for(var i = 0, length = typeCrssroad.length; i < length; i++){
-		if(typeCrssroad[i].checked){
-			if(typeCrssroad[i].value == 3){
-				maxRoad = 7
-			}else{
-				maxRoad = 5
-			};
+	var typeCrossroad = document.getElementsByName("grpType");
+	//for each crossroad radio
+	for(var i = 0, length = typeCrossroad.length; i < length; i++){
+		if(typeCrossroad[i].checked){
+			//if crossroad is right priority and traffic lights or gyratory
+			console.log(nbRoad);
+			if((typeCrossroad[i].value == _idGiratory && nbRoad < _maxRoadGiratory) || nbRoad < _maxRoadTraficLightAndRightPriority){
+				document.getElementById("nbrRoad").textContent = nbRoad+1;
+				addOptionNbCar();				
+			}
 		};
 	};
-	if(nbRoad < maxRoad)document.getElementById("nbrRoad").textContent = nbRoad+1;
 });
+
+//add 3 base number of cars
+addOptionNbCar();
+addOptionNbCar();
+addOptionNbCar();
