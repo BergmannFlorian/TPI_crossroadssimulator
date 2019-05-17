@@ -1,6 +1,8 @@
 .divOption{
-	width: 200px;
-	height: 100vh;
+	min-width: 200px;
+	width: 20%;
+	min-height: 900px;
+	height: 100%;
 	background-color: rgb(100,100,100);
 	color: rgb(255,255,255);
 	vertical-align: top;
@@ -42,4 +44,7 @@
 }
 input{
 	cursor: pointer;
+}
+.pMsgAlert{
+	color: rgb(255,140,0);
 }

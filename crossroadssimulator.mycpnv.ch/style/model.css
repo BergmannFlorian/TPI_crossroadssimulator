@@ -8,10 +8,12 @@ Last update : 16.05.2019
 	margin: 0;
 	padding: 0;
 }
-body > *{
-	display: inline-block;
+.content{
+	width: 100vw;
+	min-height: 700px;
+	font-size: 0;
 }
-.divSim{
-	width: calc(100vw - 225px);
-	height: 100vh;
+.content > *{
+	display: inline-block;
+	font-size: 14px;
 }

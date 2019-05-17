@@ -3,24 +3,38 @@ Filename : simulation.css
 Crator : Bergmann Florian
 Last update : 16.05.2019
 */
-
+.divSim{
+	width: 79%;
+	height: 100%;
+	min-height: 900px;
+}
 .divSimulation{
 	width: 100%;
-	height: calc(100% / 2 - 4px);
+	height: 50%;
 	background-color: rgb(200,200,200);
 	color: rgb(0,0,0);
-	margin-bottom: 4px;
+}
+.divResultSimulation{
+	width: 100%;
+	min-height: calc(49% + 4px);
+	background-color: rgb(200,200,200);
+	color: rgb(0,0,0);
 }
 .play, .pause{
 	height: 50px;
 	background-size: contain;
 	background-repeat: no-repeat;
 	margin: 5px;
-	
 }
 .play{
 	background-image: url('/asset/images/play.png');
 }
 .pause{
 	background-image: url('/asset/images/pause.png');
+}
+.imgCrossroad{
+	height: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }

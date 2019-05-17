@@ -2,7 +2,7 @@
 //Crator : Bergmann Florian
 //Last update : 16.05.2019
 
-//use strict//
+"use strict";
 
 //function to build new html element
 function buildElement(type, CSSClassName, parent){
@@ -14,7 +14,7 @@ function buildElement(type, CSSClassName, parent){
     parent.appendChild(elem);
     return elem;
 }
-//function to 
+//function to add one ligne of modify number of car by road
 function addOptionNbCar(){
 	var div = buildElement("div", "divOptionNbrCar", document.getElementById("divOptionLsNbrCar"));
 	var label = buildElement("label", "lblNbCar", div);
