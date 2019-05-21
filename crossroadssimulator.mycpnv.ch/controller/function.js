@@ -44,3 +44,7 @@ function removeLastOptionNbCar(){
 	console.log(optNbCar);
 	optNbCar[optNbCar.length - 1].remove();
 }
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}

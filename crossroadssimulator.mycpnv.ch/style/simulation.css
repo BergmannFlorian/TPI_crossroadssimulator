@@ -38,3 +38,18 @@ Last update : 16.05.2019
 	margin-left: auto;
 	margin-right: auto;
 }
+.vehicle{
+	position: absolute;
+}
+.car{
+	width: 27px;
+	height: 45px;
+}
+.bike{
+	width: 16px;
+	height: 30px;
+}
+.truck{
+	width: 29px;
+	height: 50px;
+}

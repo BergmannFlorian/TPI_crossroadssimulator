@@ -63,7 +63,6 @@ document.getElementById("nbrRoadMore").addEventListener("click", function(e){
 //event when button to generate simulation is cliqued
 document.getElementById("btnGenerate").addEventListener("click", function(e){
 	//test if an simulation is running
-	console.log(run);
 	if(run){
 		document.getElementById("msgAlertGenerate").textContent = "Il faut arrêter la simulation en cours avant d'en générer une nouvelle";
 	}else{	
