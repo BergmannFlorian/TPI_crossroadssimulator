@@ -1,0 +1,15 @@
+.vehicle{
+	position: relative;
+}
+.car{
+	width: 20px;
+	height: 33px;
+}
+.bike{
+	width: 15px;
+	height: 27px;
+}
+.truck{
+	width: 22px;
+	height: 37px;
+}

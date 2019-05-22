@@ -1,6 +1,6 @@
-//Filename : index.html
+//Filename : vehicle.js
 //Crator : Bergmann Florian
-//Last update : 17.05.2019
+//Last update : 22.05.2019
 
 "use strict";
 
@@ -17,6 +17,7 @@ var Vehicle = function(){
 		_this.colorG = getRandomInt(0, 255);
 		_this.colorB = getRandomInt(0, 255);
 		_this.speed = speed;
+		_this.road = road;
 		_this.number = number;
 		_this.Target = getRandomInt(1, maxRoad);
 		
