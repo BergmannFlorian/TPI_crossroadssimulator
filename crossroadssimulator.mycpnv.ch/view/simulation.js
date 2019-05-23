@@ -11,12 +11,16 @@ var Simulation = function(){
 	//method to build simulation
 	this.buildSimulation = function(crossroadId, roads, speed){
 		//build crossroad part
+		_this.e.divSimulation = document.getElementById("divSimulation");
+		_this.e.contentSimulation = buildElement("div", "contentSimulation", _this.e.divSimulation);
+		_this.e.contentSimulation.id = "contentSimulation";
+
 		_this.crossroad = new Crossroad();
-		_this.crossroad.buildCrossroad(crossroadId, roads);
+		_this.crossroad.buildCrossroad(_this.e.contentSimulation, crossroadId, roads);
 		
 		//build car part
-		//to do in sprint 6
-		_this.crossroad.createAllVehicle();
+		_this.crossroad.createAllVehicles(_this.e.contentSimulation, speed);
+		_this.crossroad.placeAllVehicles();
 		
 		//build result part
 		//to do in sprint 7

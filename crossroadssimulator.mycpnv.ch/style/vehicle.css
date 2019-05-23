@@ -1,5 +1,11 @@
+.contentVehicles {
+    position: relative;
+    height: 450px;
+    width: 450px;
+}
 .vehicle{
-	position: relative;
+	position: absolute;
+	text-align: center;
 }
 .car{
 	width: 20px;

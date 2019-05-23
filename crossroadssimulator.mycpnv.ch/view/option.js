@@ -14,7 +14,7 @@ var _maxRoadTraficLightAndRightPriority = 5;
 var _maxRoadGiratory = 7;
 
 var _minCarByRoad = 0;
-var _maxCarByRoad = 5;
+var _maxCarByRoad = 3;
 
 //set id of crossroad
 document.getElementById("grpType1").value = _idRightPriority;

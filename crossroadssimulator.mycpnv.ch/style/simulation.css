@@ -36,4 +36,12 @@ Last update : 16.05.2019
 	height: 450px;
 	width: 450px;
 	display: block;
+	position: absolute;
 }
+
+.contentSimulation {
+    position: relative;
+}
+
+
+

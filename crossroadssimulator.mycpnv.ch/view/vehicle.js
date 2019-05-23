@@ -10,7 +10,7 @@ var Vehicle = function(){
 	var typeLs = ["car", "bike", "truck"];
 	
 	//method to build a vehicle
-	this.buildVehicle = function(speed, number, road, maxRoad, positionX, positionY, degree){
+	this.buildVehicle = function(speed, number, road, maxRoad, contentVehicles){
 		//set parameters of vehicle
 		_this.type = typeLs[getRandomInt(0, typeLs.length - 1)];
 		_this.colorR = getRandomInt(0, 255);
@@ -23,12 +23,10 @@ var Vehicle = function(){
 		
 		//draw vehicle
 		_this.e.divSimulation = document.getElementById("contentSimulation");
-		_this.e.imgVehicle = buildElement("img", "vehicle "+_this.type, _this.e.divSimulation);
+		_this.e.imgVehicle = buildElement("img", "vehicle "+_this.type, contentVehicles);
 		
 		_this.e.imgVehicle.style.backgroundColor = "rgb("+_this.colorR+","+_this.colorG+","+_this.colorB+")";
 		_this.e.imgVehicle.src = "/asset/vehicles/"+_this.type+".png";
-		
-		_this.placeVehicle(positionX, positionY, degree);
 	}
 	
 	//method to place vehicle
