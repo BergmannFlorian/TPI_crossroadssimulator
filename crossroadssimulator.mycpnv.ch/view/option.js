@@ -15,7 +15,8 @@ var _maxRoadGiratory = 7;
 
 var _minCarByRoad = 0;
 var _maxCarByRoad = 3;
-
+//singleton
+var simulation = {};
 //set id of crossroad
 document.getElementById("grpType1").value = _idRightPriority;
 document.getElementById("grpType2").value = _idTraficLight;
@@ -63,13 +64,14 @@ document.getElementById("nbrRoadMore").addEventListener("click", function(e){
 //event when button to generate simulation is cliqued
 document.getElementById("btnGenerate").addEventListener("click", function(e){
 	//test if an simulation is running
-	if(run){
+	if(simulation.run){
 		document.getElementById("msgAlertGenerate").textContent = "Il faut arrêter la simulation en cours avant d'en générer une nouvelle";
 	}else{	
 		document.getElementById("msgAlertGenerate").textContent = "";
 		//remove element if exist
 		if(simulation.e != undefined){
 			simulation.e.contentSimulation.remove();
+			simulation.e.contentResultSimulation.remove();
 		}
 		var typeCrossroad = document.getElementsByName("grpType");
 		//for each crossroad radio

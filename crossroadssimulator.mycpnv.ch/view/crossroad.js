@@ -1,6 +1,6 @@
 //Filename : crossroad.js
 //Crator : Bergmann Florian
-//Last update : 22.05.2019
+//Last update : 23.05.2019
 
 "use strict";
 
@@ -10,6 +10,7 @@ var Crossroad = function(){
 	this.roads = {};
 	this.vehicleLs = {};
 	this.crossRoadType = "";
+	//variable to store all base position of each roads for each crossroads
 	this.positionBaseVehicule = {
 		"rightPriorityAndTraficLight": {
 			3: {
@@ -62,7 +63,7 @@ var Crossroad = function(){
 				//instence new vehicle
 				var vehicle = new Vehicle();
 				//build vehicle
-				vehicle.buildVehicle(speed, numberOfVehicle, road, _this.roads, _this.e.contentVehicles);
+				vehicle.buildVehicle(speed, numberOfVehicle, road, _this.roads.length, _this.e.contentVehicles);
 				//add vehicle to the list
 				_this.vehicleLs[road][x] = vehicle;
 			}
@@ -90,7 +91,6 @@ var Crossroad = function(){
 					var positionY = centerCrossroadY + _this.positionBaseVehicule["rightPriorityAndTraficLight"][Object.keys(_this.vehicleLs).length][vehicle.road]["y"] + (_this.positionBaseVehicule["rightPriorityAndTraficLight"][Object.keys(_this.vehicleLs).length][vehicle.road]["decalY"]*vehicles);
 					var positionDegree = _this.positionBaseVehicule["rightPriorityAndTraficLight"][Object.keys(_this.vehicleLs).length][vehicle.road]["degree"];
 				}
-				console.log(positionX, positionY, positionDegree);
 				vehicle.placeVehicle(positionX, positionY, positionDegree);
 			}
 		}		

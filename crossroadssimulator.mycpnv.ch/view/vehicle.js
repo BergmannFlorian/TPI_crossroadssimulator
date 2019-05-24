@@ -1,6 +1,6 @@
 //Filename : vehicle.js
 //Crator : Bergmann Florian
-//Last update : 22.05.2019
+//Last update : 24.05.2019
 
 "use strict";
 
@@ -19,10 +19,25 @@ var Vehicle = function(){
 		_this.speed = speed;
 		_this.road = road;
 		_this.number = number;
-		_this.Target = getRandomInt(1, maxRoad);
-		
+		//select an target
+		do{
+			_this.target = getRandomInt(1, maxRoad);
+		}while(_this.target == _this.road);
+		//define level of priority
+		if(_this.road == 1 && _this.target == maxRoad){
+			_this.priority = 1;
+			if(maxRoad == 3)_this.priority = 2;
+		}else if(_this.road == maxRoad && _this.target == 1){
+			_this.priority = 3;
+			if(maxRoad == 3)_this.priority = 2;
+		}else if(_this.target == _this.road - 1){
+			_this.priority = 1;
+		}else if(_this.target == _this.road + 1){
+			_this.priority = 3;
+		}else{
+			_this.priority = 2;
+		}
 		//draw vehicle
-		_this.e.divSimulation = document.getElementById("contentSimulation");
 		_this.e.imgVehicle = buildElement("img", "vehicle "+_this.type, contentVehicles);
 		
 		_this.e.imgVehicle.style.backgroundColor = "rgb("+_this.colorR+","+_this.colorG+","+_this.colorB+")";
