@@ -95,4 +95,15 @@ var Crossroad = function(){
 			}
 		}		
 	}
+	//function to remove vehicle
+	this.removeVehicle = function(numberOfVehicle){
+		for(var road in _this.vehicleLs){
+			for(var vehicle in _this.vehicleLs[road]){
+				if(_this.vehicleLs[road][vehicle].number == numberOfVehicle){
+					_this.vehicleLs[road][vehicle].parentNode.removeChild(vehicle);
+				}
+			}
+		}
+		console.log(_this.vehicleLs);
+	}
 }

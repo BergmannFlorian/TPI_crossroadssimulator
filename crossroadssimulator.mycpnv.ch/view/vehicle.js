@@ -8,6 +8,9 @@ var Vehicle = function(){
     var _this = this;
     this.e = {};
 	var typeLs = ["car", "bike", "truck"];
+	this.hightPriority = 1;
+	this.mediumPriority = 2;
+	this.lowPriority = 3;
 	
 	//method to build a vehicle
 	this.buildVehicle = function(speed, number, road, maxRoad, contentVehicles){
@@ -19,23 +22,25 @@ var Vehicle = function(){
 		_this.speed = speed;
 		_this.road = road;
 		_this.number = number;
+		_this.maxRoad = maxRoad;
+		
 		//select an target
 		do{
-			_this.target = getRandomInt(1, maxRoad);
+			_this.target = getRandomInt(1, _this.maxRoad);
 		}while(_this.target == _this.road);
 		//define level of priority
-		if(_this.road == 1 && _this.target == maxRoad){
-			_this.priority = 1;
-			if(maxRoad == 3)_this.priority = 2;
-		}else if(_this.road == maxRoad && _this.target == 1){
-			_this.priority = 3;
-			if(maxRoad == 3)_this.priority = 2;
+		if(_this.road == 1 && _this.target == _this.maxRoad){
+			_this.priority = _this.hightPriority;
+			if(_this.maxRoad == 3)_this.priority = _this.mediumPriority;
+		}else if(_this.road == _this.maxRoad && _this.target == 1){
+			_this.priority = _this.lowPriority;
+			if(_this.maxRoad == 3)_this.priority = _this.mediumPriority;
 		}else if(_this.target == _this.road - 1){
-			_this.priority = 1;
+			_this.priority = _this.hightPriority;
 		}else if(_this.target == _this.road + 1){
-			_this.priority = 3;
+			_this.priority = _this.lowPriority;
 		}else{
-			_this.priority = 2;
+			_this.priority = _this.mediumPriority;
 		}
 		//draw vehicle
 		_this.e.imgVehicle = buildElement("img", "vehicle "+_this.type, contentVehicles);
@@ -49,5 +54,47 @@ var Vehicle = function(){
 		_this.e.imgVehicle.style.left = positionX;
 		_this.e.imgVehicle.style.top = positionY;
 		_this.e.imgVehicle.style.transform = "rotate("+degree+"deg)";
+	}
+	//method to path for vehicle
+	this.getNextZones = function(){
+		var nextZones = [];
+		//by priority, turn left use the turn right, and go forward use the two
+		switch(_this.priority){
+			//if vehicle go forward
+			case _this.mediumPriority:
+				var nextRoad = (_this.road-1)
+				if(nextRoad == 0)nextRoad = _this.maxRoad;
+				nextZones.push((nextRoad*10+3));
+				//if they are more than one road between road and target
+				if((_this.road - _this.target) == -2 || (_this.road - _this.target) == 3){
+					nextRoad--;
+					if(nextRoad == 0)nextRoad = _this.maxRoad;
+					nextZones.push((nextRoad*10+3));
+				}
+			//if vehicle turn left
+			case _this.lowPriority:
+				nextZones.push((_this.road*10+3),(_this.target*10+3));
+			//if vehicle turn right
+			case _this.hightPriority:
+				nextZones.push((_this.road*10+1),(_this.target*10+2));
+				break;
+		}
+		return nextZones;
+	}
+	this.textResult = function(){
+		var text = "";
+		//get name of type of vehicle in french
+		if(_this.type == "car")text = "la voiture ";
+		if(_this.type == "bike")text = "la moto ";
+		if(_this.type == "truck")text = "le camion ";
+		//add number of vehicle
+		text += _this.number + " ";
+		//add action
+		if(_this.priority == _this.hightPriority)text += "tourne à droite ";
+		if(_this.priority == _this.lowPriority)text += "tourne à gauche ";
+		if(_this.priority == _this.mediumPriority)text += "va ";
+		//add road
+		text += "sur la route " + _this.target;
+		return text;
 	}
 }
