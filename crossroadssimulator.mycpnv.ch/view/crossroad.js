@@ -8,7 +8,8 @@ var Crossroad = function(){
     var _this = this;
     this.e = {};
 	this.roads = {};
-	this.vehicleLs = {};
+	this.vehicleLs = [];
+	this.vehicleInGiratory = [];
 	this.crossRoadType = "";
 	//variable to store all base position of each roads for each crossroads
 	this.positionBaseVehicule = {
@@ -39,8 +40,18 @@ var Crossroad = function(){
 			4:{x: -120, y: 60, degree: 270, decalX: -40, decalY: 0},
 			5:{x: 0, y: -150, degree: 45, decalX: 30, decalY: -30},
 			6:{x: 125, y: 0, degree: 135, decalX: 30, decalY: 30},
-			7:{x: -25, y: 120, degree: 225, decalX: -30, decalY: 30}
-		}
+			7:{x: -25, y: 120, degree: 225, decalX: -30, decalY: 30},
+			}
+		};
+	this.positionInGiratory = {
+		1:{x: -90, y: -90, degree: 45},
+		2:{x: 80, y: -80, degree: 135},
+		3:{x: 70, y: 70, degree: 225},
+		4:{x: -70, y: 70, degree: 315},
+		5:{x: -5, y: -120, degree: 90},
+		6:{x: 100, y: 0, degree: 180},
+		7:{x: 10, y: 100, degree: 270},
+		8:{x: -115, y: -10, degree: 0}
 	};
 	//method to build crossroad
 	this.buildCrossroad = function(contentSimulation, crossroadId, roads){
@@ -48,7 +59,7 @@ var Crossroad = function(){
 		_this.roads = roads;
 		//build crossroad part		
 		_this.e.crossroad = buildElement("img", "imgCrossroad", contentSimulation);
-		_this.e.crossroad.src = "/asset/crossroad/"+crossroadId+"/"+roads.length+".png";
+		_this.e.crossroad.src = "./asset/crossroad/"+crossroadId+"/"+roads.length+".png";
 	}
 	//function to create all vehicle
 	this.createAllVehicles = function(contentSimulation, speed){
@@ -57,7 +68,7 @@ var Crossroad = function(){
 		_this.e.contentVehicles = buildElement("div", "contentVehicles", contentSimulation);
 		//for each road
 		for(var road = 1; road <= _this.roads.length; road++){
-			_this.vehicleLs[road] = {};
+			_this.vehicleLs[road] = [];
 			//for each vehicle
 			for(var x = 0; x < _this.roads[road-1].childNodes[2].textContent; x++){
 				//instence new vehicle
@@ -66,6 +77,7 @@ var Crossroad = function(){
 				vehicle.buildVehicle(speed, numberOfVehicle, road, _this.roads.length, _this.e.contentVehicles);
 				//add vehicle to the list
 				_this.vehicleLs[road][x] = vehicle;
+				numberOfVehicle++;
 			}
 		}
 	}
@@ -93,17 +105,42 @@ var Crossroad = function(){
 				}
 				vehicle.placeVehicle(positionX, positionY, positionDegree);
 			}
-		}		
+		}
+		for(var vehicle in _this.vehicleInGiratory){
+			vehicle = _this.vehicleInGiratory[vehicle];
+			var positionX = centerCrossroadX + _this.positionInGiratory[vehicle.road]["x"];
+			var positionY = centerCrossroadY + _this.positionInGiratory[vehicle.road]["y"];
+			var positionDegree = _this.positionInGiratory[vehicle.road]["degree"];
+			vehicle.placeVehicle(positionX, positionY, positionDegree);
+		}
+	}
+	//function to check if the crossroad is empty
+	this.checkIfEmpty = function(){
+		for(var road in _this.vehicleLs){
+			if(_this.vehicleLs[road].length > 0)return false;
+		}
+		if(_this.vehicleInGiratory.length > 0)return false;
+		return true;
 	}
 	//function to remove vehicle
-	this.removeVehicle = function(numberOfVehicle){
+	this.removeVehicle = function(numberOfVehicle, removeGraph = true){
 		for(var road in _this.vehicleLs){
 			for(var vehicle in _this.vehicleLs[road]){
 				if(_this.vehicleLs[road][vehicle].number == numberOfVehicle){
-					_this.vehicleLs[road][vehicle].parentNode.removeChild(vehicle);
+					if(removeGraph)document.getElementById("vehicle"+numberOfVehicle).remove();
+					_this.vehicleLs[road].shift();
 				}
 			}
 		}
-		console.log(_this.vehicleLs);
+	}
+	//function to remove vehicle from inside the giratory
+	this.removeVehicleFromGiratory = function(numberOfVehicle){
+		for(var vehicle in _this.vehicleInGiratory){
+			if(_this.vehicleInGiratory[vehicle].number == numberOfVehicle){
+				document.getElementById("vehicle"+numberOfVehicle).remove();
+				_this.vehicleInGiratory.splice(vehicle, 1);
+				console.log(vehicle, _this.vehicleInGiratory);
+			}
+		}
 	}
 }

@@ -41,7 +41,6 @@ function addOptionNbCar(){
 
 function removeLastOptionNbCar(){
 	var optNbCar = document.getElementsByClassName("divOptionNbrCar");
-	console.log(optNbCar);
 	optNbCar[optNbCar.length - 1].remove();
 }
 

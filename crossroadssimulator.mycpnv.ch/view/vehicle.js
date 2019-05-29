@@ -46,7 +46,8 @@ var Vehicle = function(){
 		_this.e.imgVehicle = buildElement("img", "vehicle "+_this.type, contentVehicles);
 		
 		_this.e.imgVehicle.style.backgroundColor = "rgb("+_this.colorR+","+_this.colorG+","+_this.colorB+")";
-		_this.e.imgVehicle.src = "/asset/vehicles/"+_this.type+".png";
+		_this.e.imgVehicle.src = "./asset/vehicles/"+_this.type+".png";
+		_this.e.imgVehicle.id = "vehicle" + _this.number;
 	}
 	
 	//method to place vehicle
@@ -81,7 +82,7 @@ var Vehicle = function(){
 		}
 		return nextZones;
 	}
-	this.textResult = function(){
+	this.textResult = function(crossroadType, inOut){
 		var text = "";
 		//get name of type of vehicle in french
 		if(_this.type == "car")text = "la voiture ";
@@ -89,12 +90,21 @@ var Vehicle = function(){
 		if(_this.type == "truck")text = "le camion ";
 		//add number of vehicle
 		text += _this.number + " ";
-		//add action
-		if(_this.priority == _this.hightPriority)text += "tourne à droite ";
-		if(_this.priority == _this.lowPriority)text += "tourne à gauche ";
-		if(_this.priority == _this.mediumPriority)text += "va ";
-		//add road
-		text += "sur la route " + _this.target;
+		if(crossroadType == "giratory"){
+			if(inOut == "in"){
+				text += "rentre dans le giratoire"
+			}
+			if(inOut == "out"){
+				text += "sort à la sortie " + _this.target;
+			}
+		}else{
+			//add action
+			if(_this.priority == _this.hightPriority)text += "tourne à droite ";
+			if(_this.priority == _this.lowPriority)text += "tourne à gauche ";
+			if(_this.priority == _this.mediumPriority)text += "va ";
+			//add road
+			text += "sur la route " + _this.target;
+		}
 		return text;
 	}
 }
