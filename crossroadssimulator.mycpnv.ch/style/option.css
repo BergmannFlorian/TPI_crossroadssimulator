@@ -1,14 +1,12 @@
 /* 
 Filename : simulation.css
 Crator : Bergmann Florian
-Last update : 16.05.2019
+Last update : 04.06.2019
 */
 .divOption{
 	min-width: 200px;
 	width: 20%;
-	min-height: 900px;
 	height: 100%;
-	background-color: rgb(100,100,100);
 	color: rgb(255,255,255);
 	vertical-align: top;
 }
