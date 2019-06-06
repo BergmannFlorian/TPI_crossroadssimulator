@@ -1,0 +1,26 @@
+/* 
+Filename : simulation.css
+Crator : Bergmann Florian
+Last update : 04.06.2019
+*/
+.contentVehicles {
+    position: relative;
+    height: 450px;
+    width: 450px;
+}
+.vehicle{
+	position: absolute;
+	text-align: center;
+}
+.car{
+	width: 20px;
+	height: 33px;
+}
+.bike{
+	width: 15px;
+	height: 27px;
+}
+.truck{
+	width: 22px;
+	height: 37px;
+}

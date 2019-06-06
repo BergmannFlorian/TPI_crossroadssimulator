@@ -1,0 +1,19 @@
+/* 
+Filename : model.css
+Crator : Bergmann Florian
+Last update : 04.06.2019
+*/
+*{
+	margin: 0;
+	padding: 0;
+}
+.content{
+	width: 100vw;
+	min-height: 700px;
+	font-size: 0;
+	background-color: rgb(100,100,100);
+}
+.content > *{
+	display: inline-block;
+	font-size: 14px;
+}
